@@ -1,10 +1,8 @@
-import React from "react";
 import styled from "styled-components";
 
 export default styled.button`
-  background: ${({ bg }) => bg};
+  margin: 0.5em;
   border: 2px solid #222222;
-  color: ${({ color }) => color};
   font: inherit;
   cursor: pointer;
   text-align: left;
