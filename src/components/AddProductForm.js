@@ -1,26 +1,25 @@
 import React from "react";
-import Form from "./Form";
-import Input from "./Input";
-import Select from "./Select";
-import Button from "./Button";
-import BtnGroup from "./BtnGroup";
-import Checkbox from "./Checkbox";
+import "./styles.css";
+import AddProductForm from "./components/AddProductForm";
+import Card from "./components/Card";
 
-export default ({ divisions, brands }) => (
-  <Form>
-    <Input type="text" name="title" placeholder="Title" />
-    <Input type="number" name="price" placeholder="Price" />
-    <Select
-      name="divisionId"
-      placeholder="Select Division"
-      options={divisions}
-    />
-    <Select name="brandId" placeholder="Select Brand" options={brands} />
-    <Checkbox label="Stay Signed In" />
-    <BtnGroup>
-      <Button type="reset">Cancel</Button>
-      <Button type="submit">Save</Button>
-    </BtnGroup>
-  </Form>
-);
-
+export default function App() {
+  const divisions = [{ id: 1, title: "Tools" }];
+  const brands = [{ id: 1, title: "Makita" }];
+  return (
+    <div className="App">
+      <AddProductForm divisions={divisions} brands={brands} />
+      <Card
+        title="Welcome Mat"
+        img="https://via.placeholder.com/300"
+        alt="Welcome Mat"
+        category="Mats"
+        rating={4.5}
+        soldCount={253}
+        price={10}
+        currency="USD"
+        discount={20}
+      />
+    </div>
+  );
+}
