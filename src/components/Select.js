@@ -1,16 +1,9 @@
 import React from "react";
+import Label from "./Label";
 import styled from "styled-components";
 
-const Select = ({ options, placeholder, ...props }) => (
-  <select {...props}>
-    <option>{placeholder}</option>
-    {options.map(({ id, title }) => (
-      <option value={id}>{title}</option>
-    ))}
-  </select>
-);
-
-export default styled(Select)`
+const Select = styled.select`
+  margin: 0.3em 0;
   transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
   appearance: none;
   box-shadow: 0 1px 6px 0 rgba(34, 34, 34, 0.15);
@@ -31,6 +24,7 @@ export default styled(Select)`
   text-overflow: "";
   cursor: pointer;
   text-transform: none;
+  box-sizing: border-box;
 
   &:hover {
     border-color: rgba(34, 34, 34, 0.5);
@@ -41,3 +35,17 @@ export default styled(Select)`
     outline: 0;
   }
 `;
+
+export default ({ options, placeholder, id, label, ...props }) => (
+  <div>
+    {label && <Label htmlFor={id}>{label}</Label>}
+    <Select {...props}>
+      {placeholder && <option>{placeholder}</option>}
+      {options.map(({ id, title }) => (
+        <option key={id} value={id}>
+          {title}
+        </option>
+      ))}
+    </Select>
+  </div>
+);
